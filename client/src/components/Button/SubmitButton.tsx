@@ -1,23 +1,35 @@
-import type { FC } from "react"
+import type { FC } from "react";
+import Spinner from "../Spinner/Spinner"; // Assuming Spinner is in a separate file
 
 interface SubmitButtonProps {
-    label: string
-    newClassName?: string
-    className?: string
-
+    label: string;
+    loading?: boolean;
+    loadingLabel?: string;
+    className?: string;
 }
-const SubmitButton: FC<SubmitButtonProps> = ({ label, newClassName, className }) => {
+
+const SubmitButton: FC<SubmitButtonProps> = ({
+    label,
+    loading = false,
+    loadingLabel = "Loading...",
+    className = "bg-blue-500 hover:bg-blue-700 text-white text-sm font-medium cursor-pointer py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+}) => {
     return (
-        <>
-            <button
-                type="submit"
-                className={`${newClassName ? newClassName : 'bg-blue-500 hover:bg-blue-700 text-white text-sm font-medium cursor-pointer py-2 px-4'} 
-                rounded focus:outline-none focus:shadow-outline ${className}`}
-            >
-                {label}
-            </button>
-        </>
-    )
-}
+        <button
+            type="submit"
+            disabled={loading}
+            className={`${className} ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
+        >
+            {loading ? (
+                <div className="flex items-center justify-center">
+                    <Spinner size="sm" />
+                    <span className="ml-2">{loadingLabel}</span>
+                </div>
+            ) : (
+                label
+            )}
+        </button>
+    );
+};
 
-export default SubmitButton
+export default SubmitButton;
