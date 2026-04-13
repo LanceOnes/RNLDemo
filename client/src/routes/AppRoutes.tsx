@@ -12,6 +12,7 @@ const AppRoutes = () => {
             <Routes>
                 <Route element={<AppLayout />}>
                     <Route path="/" element={<GenderMainPage />} />
+                    <Route path="/gender" element={<GenderMainPage />} />
                     <Route path="/gender/edit/:gender_id" element={<EditGenderPage />} />
                     <Route path="/gender/delete/:gender_id" element={<DeleteGenderPage />} />
                     <Route path="/user" element={<UserMainPage />} />
