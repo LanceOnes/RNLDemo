@@ -4,10 +4,10 @@ import FloatingLabelInput from "../../../components/input/FloatingLabelInput";
 import Modal from "../../../components/Modal";
 import FloatingLabelSelect from "../../../components/Select/FloatingLabelSelect";
 import { useEffect, useState, type FC } from "react";
-import type { GenderColumns } from "../../../interfaces/GenderColumns";
 import GenderService from "../../../services/GenderService";
-import type { UserFieldErrors } from "../../../interfaces/UserfieldErrors";
 import UserService from "../../../services/UserService";
+import type { UserFieldErrors } from "../../../interfaces/UserInterface";
+import type { GenderColumns } from "../../../interfaces/GenderInterface";
 
 interface AddUserFormModalProps {
   onUserAdded: (message: string) => void;
